@@ -1,36 +1,76 @@
-<html>
+<!DOCTYPE html>
+<html lang="it">
 <head>
-	<script>
-	function stampa(){
-		print=document.getElementById("demo").value
-		print1=document.getElementById("demo1").value
-		print2=document.getElementById("demo2").value
-		document.getElementById("dest").innerHTML=print
-		document.getElementById("dest1").innerHTML=print1
-		document.getElementById("dest2").innerHTML=print2
-				
-		
-			
-		}
-	</script>
-	</head>
-	<body>
-	<p>nome </p>
-	<input type="text" id="demo">
-	<p>cognome </p>
-	<input type="text" id="demo1">
-	<p>username </p>
-	<input type="text" id="demo2">
-	<input type="Button" value="Cliccami" onclick="stampa()">
-	<div style="float:right;">
-	<p id="dest"></p>
-	<p id="dest1"></p>
-	<p id="dest2"></p>
-	</div>
-	</body>
+  <meta charset="UTF-8">
+  <title>Anagrafica Utente</title>
+</head>
+<body>
+  <h2>Inserisci Anagrafica Utente</h2>
 
+  <form id="anagraficaForm">
+    <label>Nome:
+      <input type="text" id="nome" required>
+    </label>
 
+    <label>Cognome:
+      <input type="text" id="cognome" required>
+    </label>
+
+    <label>Indirizzo:
+      <input type="text" id="indirizzo" required>
+    </label>
+
+    <label>Città:
+      <input type="text" id="citta" required>
+    </label>
+
+    <label>CAP:
+      <input type="text" id="cap" required>
+    </label>
+
+    <label>Data di nascita:
+      <input type="date" id="dataNascita" required>
+    </label>
+
+    <button type="button" onclick="calcolaGenerazione()">Invia</button>
+  </form>
+
+  <div class="output" id="risultato"></div>
+
+  <script>
+    function calcolaGenerazione() {
+      nome = document.getElementById('nome').value;
+      cognome = document.getElementById('cognome').value;
+      indirizzo = document.getElementById('indirizzo').value;
+      citta = document.getElementById('citta').value;
+      cap = document.getElementById('cap').value;
+      dataNascita = document.getElementById('dataNascita').value;
+annoNascita = new Date(dataNascita).getFullYear();
+      eta = new Date().getFullYear() - annoNascita;
+
+      generazione = '';
+
+      if (annoNascita >= 2013) generazione = 'Generazione Alpha';
+      else if (annoNascita >= 1997) generazione = 'Generazione Z';
+      else if (annoNascita >= 1981) generazione = 'Millennials';
+      else if (annoNascita >= 1965) generazione = 'Generazione X';
+      else if (annoNascita >= 1946) generazione = 'Baby Boomers';
+      else if (annoNascita >= 1928) generazione = 'Generazione Silenziosa';
+      else if (annoNascita >= 1901) generazione = 'Greatest Generation';
+      else generazione = 'Pre-1901 (non classificata)';
+
+      risultato = `
+        <strong>Dati inseriti:</strong><br>
+        Nome: ${nome} ${cognome}<br>
+        Indirizzo: ${indirizzo}, ${citta} (${cap})<br>
+        Data di nascita: ${dataNascita}<br>
+        Età: ${eta} anni<br>
+        <strong>Generazione di appartenenza:</strong> ${generazione}
+      `;
+
+      document.getElementById('risultato').innerHTML = risultato;
+    }
+  </script>
+</body>
 </html>
-
-
 
