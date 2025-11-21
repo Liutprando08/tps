@@ -71,8 +71,11 @@ annoNascita = new Date(dataNascita).getFullYear(); //estrae anno da dataNascita 
         case annoNascita >= 1928:
           generazione = 'Generazione Silenziosa';
           break;
+        case annoNascita >= 1908:
+          generazione = 'Greatest Generation';
+          break;
         default:
-          generazione = 'Pre-1928 (non classificata)';
+          generazione = 'Pre-1908 (non classificata)';
         break
       }
       risultato = `
