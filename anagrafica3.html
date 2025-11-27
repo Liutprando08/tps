@@ -73,13 +73,20 @@
       sessosel=sesso.value;
       mezzo = document.querySelectorAll('input[type="checkbox"]:checked');
       let mezziSelezionati = [];
-  mezzo.forEach(checkbox => {
-    mezziSelezionati.push(checkbox.value);
-    });
-  let outputMezzi = mezziSelezionati.join();
+      mezzo.forEach(checkbox => {
+      mezziSelezionati.push(checkbox.value);
+      });
+      let outputMezzi = mezziSelezionati.join();
       provincia=document.querySelector('select[name="provincia"]').value;
+      let materie = document.getElementById('materie');
+     let materieSelezionate = [];
+     for (let i = 0; i < materie.options.length; i++) {
+     if (materieSelect.options[i].selected) {
+      materieSelezionate.push(materie.options[i].value);
+     }
+      }
+  let outputMaterie = materieSelezionate.join('');
 
-      
 
 
 
@@ -127,6 +134,7 @@ annoNascita = new Date(dataNascita).getFullYear(); //estrae anno da dataNascita 
       document.getElementById('outsesso').innerHTML= sessosel;
       document.getElementById('outprovincia').innerHTML=provincia;
       document.getElementById('outmezzi').innerHTML=outputMezzi;
+      document.getElementById('outmaterie').innerHTML=outputMaterie;
       
 
       
@@ -141,5 +149,6 @@ annoNascita = new Date(dataNascita).getFullYear(); //estrae anno da dataNascita 
   <div id="outsesso"></div>
   <div id="outmezzi"></div>
     <div id="outprovincia"></div>
+    <div id="outmaterie"></div>
 </body>
 </html>
