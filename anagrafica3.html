@@ -16,11 +16,33 @@
     <label>Cognome:
       <input type="text" id="cognome" required>
     </label>
-
+    <label>sesso:</label><br>
+        <input type="radio" name="sesso" value="maschio">
+  <label for="rosso">maschio</label><br>
+        <input type="radio" name="sesso" value="femmina">
+  <label for="verde">femmina</label><br>
+        <input type="radio" name="sesso" value="altro">
+  <label for="blu">altro</label><br>
     <label>Indirizzo:
       <input type="text" id="indirizzo" required>
     </label>
-
+<input type="checkbox" id="box1" name="auto" value="auto" onclick="onClickHandler(document.getElementById('box1').value)">
+<label for="vehicle1"> ho un auto</label>
+<input type="checkbox" id="box2" name="bici" value="bici" onclick="onClickHandler(document.getElementById('box2').value)">
+<label for="vehicle2"> ho una bici</label>
+<input type="checkbox" id="box3" name="cavallo" value="cavallo" onclick="onClickHandler(document.getElementById('box3').value)">
+<label for="vehicle3"> ho un cavallo</label>
+<select name="provincia">
+    <option value="milano">milano</option>
+    <option value="novara">novara</option>
+    <option value="monza">monza</option>
+    
+</select>
+<select name="materie_preferite" id="materie" multiple>
+        <option value="matematica">Matematica</option>
+        <option value="italiano">Italiano</option>
+        <option value="storia">Storia</option>
+    </select>
     <label>Città:
       <input type="text" id="citta" required>
     </label>
@@ -47,6 +69,15 @@
       citta = document.getElementById('citta').value;
       cap = document.getElementById('cap').value;
       dataNascita = document.getElementById('dataNascita').value;
+      sesso = document.querySelector('input[name="sesso"]:checked');
+      sessosel=sesso.value;
+      mezzo = document.querySelectorAll('input[type="checkbox"]:checked');
+      
+
+
+
+
+
 annoNascita = new Date(dataNascita).getFullYear(); //estrae anno da dataNascita per fare calcoli per generazione
       eta = new Date().getFullYear() - annoNascita; //cacolo eta sottraendo l anno corrente con anno di nascita
 
@@ -79,17 +110,26 @@ annoNascita = new Date(dataNascita).getFullYear(); //estrae anno da dataNascita 
           generazione = 'Pre-1908 (non classificata)';
         break
       }
-      risultato = `
-        <strong>Dati inseriti:</strong><br>
-        Nome: ${nome} ${cognome}<br>
-        Indirizzo: ${indirizzo}, ${citta} (${cap})<br>
-        Data di nascita: ${dataNascita}<br>
-        Età: ${eta} anni<br>
-        <strong>Generazione di appartenenza:</strong> ${generazione}
-      `;
 
-      document.getElementById('risultato').innerHTML = risultato;
+      document.getElementById('outnome').innerHTML= nome;
+      document.getElementById('outcognome').innerHTML= cognome;
+      document.getElementById('outindirizzo').innerHTML= indirizzo;
+      document.getElementById('outcitta').innerHTML= citta;
+      document.getElementById('outcap').innerHTML= cap;
+      document.getElementById('outdatanascita').innerHTML= dataNascita;
+      document.getElementById('outsesso').innerHTML= sessosel;
+      
+
+      
     }
   </script>
+  <div id="outnome"></div>
+  <div id="outcognome"></div>
+  <div id="outindirizzo"></div>
+  <div id="outcitta"></div>
+  <div id="outcap"></div>
+  <div id="outdatanascita"></div>
+  <div id="outsesso"></div>
+  <div id="outmezzi"></div>
 </body>
 </html>
