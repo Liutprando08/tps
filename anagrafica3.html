@@ -72,6 +72,13 @@
       sesso = document.querySelector('input[name="sesso"]:checked');
       sessosel=sesso.value;
       mezzo = document.querySelectorAll('input[type="checkbox"]:checked');
+      let mezziSelezionati = [];
+  mezzo.forEach(checkbox => {
+    mezziSelezionati.push(checkbox.value);
+    });
+  let outputMezzi = mezziSelezionati.join();
+      provincia=document.querySelector('select[name="provincia"]').value;
+
       
 
 
@@ -118,6 +125,8 @@ annoNascita = new Date(dataNascita).getFullYear(); //estrae anno da dataNascita 
       document.getElementById('outcap').innerHTML= cap;
       document.getElementById('outdatanascita').innerHTML= dataNascita;
       document.getElementById('outsesso').innerHTML= sessosel;
+      document.getElementById('outprovincia').innerHTML=provincia;
+      document.getElementById('outmezzi').innerHTML=outputMezzi;
       
 
       
@@ -131,5 +140,6 @@ annoNascita = new Date(dataNascita).getFullYear(); //estrae anno da dataNascita 
   <div id="outdatanascita"></div>
   <div id="outsesso"></div>
   <div id="outmezzi"></div>
+    <div id="outprovincia"></div>
 </body>
 </html>
